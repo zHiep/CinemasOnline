@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ đồ ghế ngồi</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f2f5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #seatContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        .seat {
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .seat.normal { background-color: #3498db; } /* Màu ghế thường */
+        .seat.vip { background-color: #e67e22; }    /* Màu ghế VIP */
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: nowrap;
+            position: relative;
+        }
+        .add-seat-button {
+            width: 35px;
+            height: 35px; 
+            background-color: #27ae60;
+            color: white;
+            text-align: center;
+            line-height: 35px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .add-seat-button:hover { background-color: #1e8449; }
+        .delete-row-button {
+            position: absolute;
+            top: 0;
+            right: -45px;
+            width: 25px;
+            height: 25px;
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        button {
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-bottom: 15px;
+        }
+        .btn-add-row { padding:10px 20px; }
+        button:hover { background-color: #21618c; }
+        input[type="number"], input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+        input[type="number"]:focus, input[type="text"]:focus { border-color: #2980b9; }
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-content button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sơ đồ ghế ngồi rạp chiếu phim</h1>
+    <div id="seatContainer" class="container"></div>
+    
+    <input type="number" id="seatCount" placeholder="Số ghế trong hàng" min="1">
+    <button class="btn-add-row" onclick="addRow()">Thêm hàng ghế</button>
+    
+    <!-- Modal cho tùy chọn thêm ghế hoặc thay đổi loại ghế cho hàng -->
+    <div id="optionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOptionModal()">&times;</span>
+            <h2>Tùy chọn hàng ghế</h2>
+            <button onclick="addSeatToSelectedRow()">Thêm ghế vào hàng</button>
+            <button onclick="toggleSeatTypeForRow()">Đổi loại ghế của hàng (Thường/VIP)</button>
+            <button onclick="showRowModal('below')">Thêm hàng bên dưới</button>
+            <button onclick="showRowModal('above')">Thêm hàng bên trên</button>
+        </div>
+    </div>
+    
+    <!-- Modal cho thêm hàng ghế -->
+    <div id="rowModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRowModal()">&times;</span>
+            <h2>Thêm hàng ghế</h2>
+            <input type="text" id="rowName" placeholder="Nhập tên hàng ghế" />
+            <button onclick="confirmAddRow()">Xác nhận thêm hàng</button>
+        </div>
+    </div>
+    
+    <!-- Modal sửa ghế -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Sửa ghế</h2>
+            <button onclick="renameSeat()">Đổi tên ghế</button>
+            <button onclick="removeSeat()">Xóa ghế</button>
+            <button onclick="toggleSeatVisibility()">Ẩn/Hiện ghế</button>
+        </div>
+    </div>
+    
+    <script>
+        let selectedSeat = null;
+        let selectedRowContainer = null;
+        let insertPosition = null;
+        const existingRowNames = [];
+    
+        function createSeat(row, seatNumber, seatType) {
+            const seat = document.createElement('div');
+            seat.className = `seat ${seatType}`;
+            seat.textContent = `${row}${seatNumber}`;
+            seat.onclick = function() {
+                selectedSeat = seat;
+                showEditModal(); // Hiện modal chỉnh sửa khi click vào ghế
+            };
+            return seat;
+        }
+        
+        function removeSeat() {
+            if (selectedSeat) {
+                selectedSeat.remove();
+                selectedSeat = null;
+                closeEditModal();
+            }
+        }
+
+        function renameSeat() {
+            if (selectedSeat) {
+                const newName = prompt("Nhập tên mới cho ghế:", selectedSeat.textContent);
+                if (newName) {
+                    selectedSeat.textContent = newName;
+                }
+            }
+            closeEditModal();
+        }
+
+        function toggleSeatVisibility() {
+            if (selectedSeat) {
+                if (selectedSeat.style.opacity === '0.3') {
+                    selectedSeat.style.opacity = '1';
+                } else {
+                    selectedSeat.style.opacity = '0.3';
+                }
+            }
+            closeEditModal();
+        }
+
+        function addSeat(rowContainer, rowLabel, seatType) {
+            const seatCount = rowContainer.querySelectorAll('.seat').length;
+    
+            if (seatCount >= 15) {
+                alert("Không thể thêm ghế mới. Số lượng ghế tối đa trong một hàng là 15.");
+                return;
+            }
+    
+            const seatNumber = seatCount + 1;
+            const seat = createSeat(rowLabel, seatNumber, seatType);
+            rowContainer.insertBefore(seat, rowContainer.querySelector('.add-seat-button'));
+        }
+    
+        function showAddSeatModal() {
+            if (selectedRowContainer) {
+                document.getElementById('optionModal').style.display = 'block';
+            }
+        }
+    
+        function addSeatToSelectedRow() {
+            if (selectedRowContainer) {
+                addSeat(selectedRowContainer, selectedRowContainer.id.split('-')[1], 'normal');
+                closeOptionModal();
+            }
+        }
+    
+        function addRow() {
+            insertPosition = null; // Thêm hàng mới ở cuối nếu không có vị trí cụ thể
+            showRowModal();
+        }
+    
+        function showRowModal(position) {
+            insertPosition = position; // Lưu vị trí thêm hàng (above hoặc below)
+            document.getElementById('rowModal').style.display = 'block';
+        }
+    
+        function confirmAddRow() {
+            const rowNameInput = document.getElementById('rowName');
+            const rowName = rowNameInput.value.trim().toUpperCase();
+    
+            if (existingRowNames.includes(rowName)) {
+                alert("Tên hàng ghế đã tồn tại. Vui lòng chọn tên khác.");
+                return;
+            }
+    
+            const seatCount = document.getElementById('seatCount').value;
+    
+            if (!seatCount || seatCount < 1) {
+                alert('Vui lòng nhập số ghế hợp lệ.');
+                return;
+            }
+    
+            const seatContainer = document.getElementById('seatContainer');
+            const currentRowCount = seatContainer.childElementCount;
+    
+            if (currentRowCount >= 10) {
+                alert("Không thể thêm hàng mới. Số lượng hàng tối đa là 10.");
+                return;
+            }
+    
+            const rowContainer = document.createElement('div');
+            rowContainer.className = 'row';
+            rowContainer.id = `row-${rowName}`;
+    
+            for (let i = 1; i <= seatCount; i++) {
+                const seat = createSeat(rowName, i, 'normal');
+                rowContainer.appendChild(seat);
+            }
+    
+            const addSeatButton = document.createElement('button');
+            addSeatButton.className = 'add-seat-button';
+            addSeatButton.textContent = '+';
+            addSeatButton.onclick = function() {
+                selectedRowContainer = rowContainer;
+                showAddSeatModal();
+            };
+    
+            const deleteRowButton = document.createElement('button');
+            deleteRowButton.className = 'delete-row-button';
+            deleteRowButton.textContent = '×';
+            deleteRowButton.onclick = function() {
+                deleteRow(rowContainer);
+            };
+    
+            rowContainer.appendChild(addSeatButton);
+            rowContainer.appendChild(deleteRowButton);
+    
+            // Thêm hàng mới vào vị trí chỉ định
+            if (insertPosition === 'above' && selectedRowContainer) {
+                seatContainer.insertBefore(rowContainer, selectedRowContainer);
+            } else if (insertPosition === 'below' && selectedRowContainer) {
+                seatContainer.insertBefore(rowContainer, selectedRowContainer.nextSibling);
+            } else {
+                seatContainer.appendChild(rowContainer);
+            }
+    
+            existingRowNames.push(rowName);
+            rowNameInput.value = '';
+            closeRowModal();
+        }
+    
+        function closeOptionModal() {
+            document.getElementById('optionModal').style.display = 'none';
+        }
+    
+        function closeRowModal() {
+            document.getElementById('rowModal').style.display = 'none';
+        }
+    
+        function showEditModal() {
+            document.getElementById('editModal').style.display = 'block';
+        }
+    
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+    
+        function deleteRow(rowContainer) {
+            const rowName = rowContainer.id.split('-')[1];
+            const index = existingRowNames.indexOf(rowName);
+            if (index > -1) {
+                existingRowNames.splice(index, 1);
+            }
+            rowContainer.remove();
+        }
+    
+        function toggleSeatTypeForRow() {
+            if (selectedRowContainer) {
+                const seats = selectedRowContainer.querySelectorAll('.seat');
+                const isNormal = Array.from(seats).some(seat => seat.classList.contains('normal'));
+    
+                seats.forEach(seat => {
+                    seat.classList.toggle('normal', !isNormal);
+                    seat.classList.toggle('vip', isNormal);
+                });
+                closeOptionModal();
+            }
+        }
+    </script>
+    
+    </body>
+    </html>

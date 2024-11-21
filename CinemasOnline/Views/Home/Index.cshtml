@@ -1,0 +1,405 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    <link href="~/Content/Nguoidung/assets/css/TrangChu.css" rel="stylesheet" />
+}
+
+<!-- Slide Show -->
+<div class="carousel-container">
+    <div class="carousel-slide">
+        <img src="~/Content/Nguoidung/assets/img/bannerVenom.jpg" alt="Image 1">
+        <img src="~/Content/Nguoidung/assets/img/banner2.png" alt="Image 2">
+        <img src="~/Content/Nguoidung/assets/img/banner3.jpg" alt="Image 3">
+    </div>
+
+    <!-- Thêm phần dấu chấm -->
+    <div class="dots-container">
+        <span class="dot" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+    </div>
+</div>
+<button id="prevBtn"><i class="fa-solid fa-angle-left"></i></button>
+<button id="nextBtn"><i class="fa-solid fa-angle-right"></i></button>
+
+<!-- SEARCH ICON -->
+<div class="search-container">
+    <i class="fa fa-search search-icon" id="searchIcon"></i>
+    <input type="text" class="search-input" id="searchInput" placeholder="Tìm kiếm...">
+</div>
+
+<div class="grid">
+    <div class="movie_content">
+        <div class="movie_status">
+            <li class="tablinks_grid" electronic="movie_one">
+                <span>Phim đang chiếu</span>
+            </li>
+            <li class="tablinks_grid" electronic="movie_two">
+                <span>Phim sắp chiếu</span>
+            </li>
+        </div>
+        <div id="movie_one" class="grid__row tabcontent_grid">
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div id="trailerPopup" class="popup">
+                            <div class="popup-content" id="popupContent">
+                                <p>Trailer - Venom: Kèo cuối</p>
+                                <span class="close">&times;</span>
+                                <iframe id="trailerVideo" width="560" height="315"
+                                        src=""
+                                        data-video-src="https://www.youtube.com/embed/dN3ltKrp2t8?si=ginf00-4WT5AFHK9"
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt="">
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt="">
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ ám tín Đồ.jpg" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="movie_two" class="grid__row tabcontent_grid">
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div id="trailerPopupTwo" class="popup">
+                            <div class="popup-content" id="popupContentTwo">
+                                <p>Trailer - Venom: Kèo cuối</p>
+                                <span class="closeTwo">&times;</span>
+                                <iframe id="trailerVideoTwo" width="560" height="315"
+                                        src=""
+                                        data-video-src="https://www.youtube.com/embed/dN3ltKrp2t8?si=ginf00-4WT5AFHK9"
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie ">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__column-2-4">
+                <div class="movie_container">
+                    <div class="movie_content--item">
+                        <div class="movie_content--hover">
+                            <img class="movie_content--img" src="~/Content/Nguoidung/assets/img/Quỷ linh nhi.png" alt=""></img>
+                            <i title="" ; class="far fa-play-circle"></i>
+                        </div>
+                        <div class="movie_content--text">
+                            <div class="movie-content--title">
+                                <a href="./Trangchitiet.html">Kumathong: Quỷ linh nhi</a>
+                                <br>
+                                <span>Thể loại:</span><span class="movie_text">Kinh dị</span>
+                                <br>
+                                <span>Thời lượng:</span><span class="movie_text">87 phút</span>
+                            </div>
+                            <div class="movie_content--buy js-buy-movie">Mua vé</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

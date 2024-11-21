@@ -1,0 +1,556 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: Oswald, sans-serif;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;;
+}
+
+.grid {
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.main {
+
+}
+
+/* Header */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+
+.header_content {
+    background: black;
+} 
+
+.form {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    color: white;
+
+}
+.language {
+    height: 24px;
+}
+.language:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+.vn_flag {
+    margin-left:16px ;
+
+}
+/* .form_register--login {
+    display: flex;
+    
+    padding-right: 24px;
+}
+
+.login {
+    padding-right: 9px;
+}
+
+.line {
+    border: solid 1px white;
+}
+
+.register {
+    padding-left: 9px;
+} */
+
+
+
+/* .login:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    text-decoration: underline;
+}
+
+.register:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    text-decoration: underline;
+} */
+
+
+
+/* USER */
+
+.user_inf4 {
+    background: #fff;
+    color: #000;  
+}
+.user_inf4 li {
+    border: 0.1px solid #ccc ;
+    padding: 8px;
+}
+.user_inf4 li:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+.user_inf4 { 
+    position: relative;
+    display: none;  
+}
+.user_inf4::before {
+    content: ""; 
+    position: absolute;
+    right: calc(40%);
+    top: -17px;
+    border-width: 14px 20px;
+    border-style: solid;
+    border-color: transparent transparent  #fff transparent;
+} 
+
+.user_name:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    text-decoration: underline
+}
+.user_name i{
+ font-size: 12px;
+}
+.user:hover .user_inf4{
+    position: absolute;
+    display: block; 
+}
+.user_list li i{
+    margin-right: 8px;
+}
+
+/* Navigation */
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.options {
+    position: relative;
+    line-height: 30px;
+}
+
+.subnav_options {
+    display: none;
+    background-color: white;
+}
+
+.options_city {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.options_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f8f6f6;
+    border-radius: 20px;
+}
+
+.options_content i {
+    padding-right: 15px;
+    padding-top: 5px;
+}
+
+.options_text {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.options_city:hover {
+    cursor: pointer;
+}
+
+.options_city:hover .subnav_options {
+    display: block;
+    position: absolute;
+}
+
+.subnav_options {
+    width: 200px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    line-height: 30px;
+    padding-left: 15px;
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.nav_contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    text-transform: uppercase;
+}
+
+.nav_contents li a {
+    padding: 10px;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.nav_contents li:hover a {
+    color: #5b9bd1;
+}
+
+
+/* FORM ĐĂNG KÝ */
+.form-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-top: 150px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+#btnRegister,
+#btnLogin {
+    width: 100%;
+    padding: 10px;
+    background-color: #5b9bd1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#btnRegister:hover,
+#btnLogin:hover {
+    opacity: 0.9;
+}
+
+/* Chia form thành hai cột */
+.form-row {
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.form-group {
+    flex-basis: 48%; /* Chiếm khoảng 48% mỗi cột để có khoảng cách giữa các cột */
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex-basis: 100%;
+    }
+}
+
+/* Đặt biểu tượng con mắt trong trường mật khẩu */
+.password-container {
+    position: relative;
+}
+
+.hiepbubuoi {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -14px;
+    margin-bottom:10px;
+    display: none; /* Ẩn mặc định */
+}
+
+/* Đổi tab */
+.tab {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab button {
+    flex: 1;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab button.active {
+    background-color: #5b9bd1;
+    color: white;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tabcontent {
+    display: none;
+}
+
+
+/* OTP */
+.otp-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+.otp-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative; /* Để vị trí của dấu X được chính xác */
+}
+
+.otp-card h6 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.otp-card div {
+    margin-bottom: 20px;
+}
+
+.otp-inputs .otp-input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.otp-validate-wrapper .otp-validate-button {
+    border-radius: 20px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    background-color: #5b9bd1;
+    border: 1px solid #5b9bd1;
+    width: 140px;
+    font-weight: bold;
+}
+
+.otp-validate-button:hover {
+    opacity: 0.8;
+}
+
+/* Style cho dấu X (close button) */
+.otp-card .close {
+    position: absolute;
+    top: -10px; /* Điều chỉnh vị trí theo chiều dọc */
+    right: -10px; /* Điều chỉnh vị trí theo chiều ngang */
+    background-color: #5b9bd1; /* Màu nền cho nút X */
+    color: white; /* Màu chữ cho nút X */
+    font-size: 40px; /* Kích thước chữ */
+    width: 30px; /* Kích thước nút */
+    height: 30px; /* Kích thước nút */
+    border-radius: 50%; /* Bo tròn nút X */
+    text-align: center; /* Căn giữa nội dung */
+    line-height: 30px; /* Căn giữa theo chiều dọc */
+    cursor: pointer; /* Con trỏ khi hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển tiếp */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho nút X */
+}
+
+.otp-card .close:hover {
+    transform: scale(1.1); /* Phóng to một chút khi hover */
+}
+
+/* Điều chỉnh vị trí dấu X */
+.otp-card .close::before {
+    content: '';
+    position: absolute;
+    top: -5px; /* Điều chỉnh vị trí để tạo khoảng trống */
+    left: -5px; /* Điều chỉnh vị trí để tạo khoảng trống */
+    right: -5px; /* Điều chỉnh vị trí để tạo khoảng trống */
+    bottom: -5px; /* Điều chỉnh vị trí để tạo khoảng trống */
+    border-radius: 50%; /* Bo tròn cho dấu X */
+    background: transparent; /* Không có nền cho vùng xung quanh */
+}
+
+
+/* Footer */
+#footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    margin-top: 40px;
+}
+
+.footer_content {
+    width: calc(100% / 4);
+}
+.panel_image { 
+}
+
+.footer_content--info {
+    /* width: 150px; */
+    
+}
+
+.footer_content--info,
+.footer_content--cinema,
+.footer_content--connect {
+    margin-right: 30px;
+}
+
+.footer_info--img {
+    margin-bottom: 10px;
+}
+
+.footer_info--list li {
+    margin-bottom: 8px;
+}
+
+.footer_info--list li a {
+    margin-left: 8px;
+    text-transform: capitalize;
+}
+
+.footer_info--list li:hover a {
+    color: #5b9bd1;
+    text-decoration: underline;
+}
+
+.footer_cinema--text,
+.footer_connect--text,
+.footer_contact--text {
+    font-size: 20px;
+    padding-bottom: 7px;
+    margin: 0 0 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(to right, #39adf0 0%, #075fa3 100%);
+    border-image-slice: 1;
+   
+}
+
+.footer_content--cinema {
+    /* width: 390px; */
+}
+
+.footer_cinema--list li {
+    margin-bottom: 8px;
+}
+
+.footer_cinema--list li a {
+    margin-left: 8px;
+    text-transform: capitalize;
+}
+
+.footer_cinema--list li:hover a {
+    color: #5b9bd1;
+    text-decoration: underline;
+}
+
+.footer_content--connect {
+    /* width: 180px; */
+}
+
+.footer_connect--img  img {
+    margin-top: 10px;
+    width: 180px;
+}
+
+.footer_connect--text {
+   
+}
+
+.footer_connect--icon {
+    display: flex;
+    justify-content: center;
+}
+
+.footer_connect--icon i {
+    font-size: 26px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer_content--contact {
+    /* width: 200px; */
+}
+
+.footer_contact--list li {
+    margin-bottom: 16px;
+}

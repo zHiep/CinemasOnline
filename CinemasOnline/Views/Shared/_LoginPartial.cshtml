@@ -1,0 +1,30 @@
+﻿
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="user">
+            <div class="user_name">
+                <span>Xin chào : @User.Identity.GetUserName()</span>
+            </div>
+            <div class="user_inf4">
+                <ul class="user_list">
+                    <li><a style="color:black;" href="#"><i class="fa-solid fa-user-large"></i>Thông tin tài khoản</a></li>
+                    <li><a style="color:black;" href="#"><i class="fa-solid fa-wallet"></i>Lịch sử giao dịch</a></li>
+                    <li><a style="color:black;" class="nav-link" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa-solid fa-square-caret-left"></i>Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="form_register--login">
+        <span class="login"><a href="/Account/Login">Đăng nhập</a></span>
+        <span class="line"></span>
+        <span class="register"><a href="/Account/Register">Đăng ký</a></span>
+    </div>
+}
+

@@ -1,0 +1,56 @@
+﻿
+@model CinemasOnline.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Đăng ký";
+    <link href="~/Content/Nguoidung/assets/css/DangKy.css" rel="stylesheet" />
+}
+
+<div class="grid">
+    <div class="form-container">
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'Register')">ĐĂNG KÝ</button>
+            <button class="tablinks" onclick="openTab(event, 'Login')">ĐĂNG NHẬP</button>
+        </div>
+        <div id="Register" class="tabcontent" style="display: block;">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="FullName">Họ và tên</label>
+                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.FullName, null, new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Địa chỉ email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Số điện thoại -->
+                    <div class="form-group">
+                        <label for="Phone">Số điện thoại</label>
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Phone, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group password-container">
+                        <label for="Password">Mật khẩu</label>
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group password-container">
+                        <label for="ConfirmPassword">Xác nhận mật khẩu</label>
+                        @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ConfirmPassword, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <button id="btnRegister" type="submit">ĐĂNG KÝ</button>
+            }
+        </div>
+    </div>
+</div>
+

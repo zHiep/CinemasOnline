@@ -1,0 +1,457 @@
+﻿
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container">
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                     @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </nav>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/178af03e68.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="main">
+        <header id="header">
+
+            <div class="header_content">
+                <div class="grid">
+                    <div class="form">
+                        <div class="language">
+                            <img src="https://www.betacinemas.vn~/Content/Nguoidung/assets/Common/icons/vietnam.png" alt="" class="vn_flag">
+                        </div>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid" style="background-color: white; padding-bottom: 15px;">
+                <nav id="navbar">
+                    <div class="logo">
+                        <img src="https://www.betacinemas.vn~/Content/Nguoidung/assets/Common/logo/logo.png" alt="" class="logo_img">
+                    </div>
+                    <div class="options">
+                        <div class="options_city">
+                            <div class="options_content">
+                                <span class="options_text">Beta Hà Nội</span>
+                                <!-- <i class="fa-solid fa-angle-down"></i> -->
+                            </div>
+                            <!-- <ul class="subnav_options">
+                                <li><a href="">Beta Hà Nội</a> <i class="fa-solid fa-angle-right"></i></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                    <div class="nav_contents">
+                        <li><a href="">Lịch chiếu</a></li>
+                        <li><a href="">Phim</a></li>
+                        <li><a href="">Tin tức</a></li>
+                        <li><a href="">Ưu đãi</a></li>
+                        <li><a href="">Thành viên</a></li>
+                    </div>
+                </nav>
+
+                <!-- Menu ẩn -->
+                <div class="menu-icon" id="menuIcon">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <nav id="sidebarMenu" class="sidebar">
+                    <ul class="nav_contents">
+                        <li><a href="">Lịch chiếu</a></li>
+                        <li><a href="">Phim</a></li>
+                        <li><a href="">Tin tức</a></li>
+                        <li><a href="">Ưu đãi</a></li>
+                        <li><a href="">Thành viên</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        @RenderBody()
+
+        <!-- FOOTER -->
+        <div class="grid" style="border-top: 3px solid #ccc; background-color: #F8F8F8;">
+            <div id="footer">
+                <div class="footer_content">
+                    <div class="footer_content--info">
+                        <img src="https://www.betacinemas.vn~/Content/Nguoidung/assets/Common/logo/logo.png" alt="" class="footer_info--img">
+                        <div class="footer_info--list">
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">Tuyển dụng</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">Giới thiệu</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">Liên hệ</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">Hướng dẫn đặt vé online</a></li>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_content">
+                    <div class="footer_content--cinema">
+                        <div class="footer_cinema--text">điều khoản sử dụng</div>
+                        <div class="footer_cinema--list">
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">điều khoản chung</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">điều khoản giao dịch</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">điều khoản thanh toán</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">điều khoản bảo mật</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="">điều khoản thường gặp</a></li>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_content">
+                    <div class="footer_content--connect">
+                        <div class="footer_connect--text">Kết nối với chúng tôi</div>
+                        <div class="footer_connect--icon">
+                            <i class="fa-brands fa-square-facebook"></i>
+                            <i class="fa-brands fa-youtube"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div class="footer_connect--img">
+                            <img src="https://www.betacinemas.vn~/Content/Nguoidung/assets/Common/logo/dathongbao.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_content">
+                    <div class="footer_content--contact">
+                        <div class="footer_contact--text">Liên hệ</div>
+                        <div class="footer_contact--list">
+                            <li>CÔNG TY CỔ PHẦN BETA MEDIA</li>
+                            <li>Địa chỉ trụ sở: Tầng 3, số 595, đường Giải Phóng, phường Giáp Bát, quận Hoàng Mai, thành phố Hà Nội</li>
+                            <li>Hotline: 1900 636807</li>
+                            <li>Email: cskh@betacorp.vn</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút chat -->
+            <div class="chat" id="chatBot">
+                <i class="fa-regular fa-comment"></i>
+            </div>
+
+            <!-- Màn hình chat ẩn -->
+            <div id="chatScreen" class="chat-screen">
+                <div class="chat-header">
+                    <p>Beta Cinama có thể giúp gì cho bạn?</p>
+                    <li id="closeChat">
+                        <i class="fa-solid fa-xmark"></i>
+                    </li>
+                </div>
+                <div class="chat-body" id="chatBody">
+                    <!-- Nội dung chat -->
+                    <div class="imgAdminChat">
+                        <div class="iconAdmin">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <p class="adminChatBot">
+                            Xin chào! Làm thế nào để giúp bạn hôm nay?
+                            <span class="timeStamp">10:45 AM</span>
+                        </p>
+
+                    </div>
+                    <div class="imgUserChat">
+                        <p class="userChatBot">
+                            Hiệp ăn cứt bú buồi
+                            <span class="timeStamp">10:45 AM</span>
+                        </p>
+                        <div class="iconUser">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-footer">
+                    <div class="chatInput-field">
+                        <input id="chatInput" type="text" placeholder="Nhập tin nhắn">
+                        <li id="sendBtn"><i class="fa-solid fa-paper-plane"></i></li>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút trở lên đầu -->
+            <div class="scrollTop" id="backToTopBtn" onclick="scrollToTop()">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+
+        </div>
+        <!-- MODAL -->
+        <div class="modal js-modal  js-modal-close">
+            <div class="modal-container js-modal-container">
+                <div class="click_close js-btn-close">
+                    <i class="fa-solid fa-xmark "></i>
+                </div>
+                <div class="modal_header">
+                    <h3>
+                        lịch chiếu -
+                        <span>Kumanthong: Quỷ Linh Nhi</span>
+                    </h3>
+                </div>
+                <hr>
+                <div class="modal-body">
+                    <div class="modal_content">
+                        <h1>Beta Rạp Thanh Hoá</h1>
+                    </div>
+                    <div class="showtimes">
+                        <ul class="viewdate">
+                            <li class="tablinks viewdate_calendar" electronic="ten">
+                                <span class="viewdate_calendar--number">10</span>/10 - T3
+                            </li>
+                            <li class="tablinks viewdate_calendar " electronic="eleven">
+                                <span class="viewdate_calendar--number ">11</span>/10 - T4
+                            </li>
+                            <li class="tablinks viewdate_calendar" electronic="twelve">
+                                <span class="viewdate_calendar--number">12</span>/10 - T5
+                            </li>
+                        </ul>
+                        <div class="showtimes_content showtimes_content--modal">
+                            <div class="showtimes_content--subtitle">
+                                <span>2D Phụ đề</span>
+                            </div>
+                            <div id="ten" class="tabcontent">
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">15:00</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            130 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time  js_buy--movie-2">21:00</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            144 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="eleven" class="tabcontent">
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">09:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            10 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">15:00</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            130 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time  js_buy--movie-2">21:00</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            144 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="twelve" class="tabcontent">
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">08:30</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            165 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time js_buy--movie-2">15:00</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            130 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="showtimes_title">
+                                    <div class="showtimes_title--time ">
+                                        <div class="btn_time  js_buy--movie-2">21:00</div>
+                                    </div>
+                                    <div class="showtimes_title--empty">
+                                        <div class="showtimes_title--empty-seat">
+                                            144 ghế trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal modal_two js_modal--2 js_modal--close-2">
+            <div class="modal-container--2 js_modal--container--2">
+                <div class="click_close js_btn--close-2 ">
+                    <i class="fa-solid fa-xmark "></i>
+                </div>
+                <div class="modal_header">
+                    <h3 class="modal_text">
+                        bạn đang đặt vé xem phim
+                    </h3>
+                </div>
+                <hr>
+                <div class="modal-body">
+                    <div class="modal_content">
+                        <h1>Kumanthong: Quỷ Linh Nhi</h1>
+                    </div>
+                    <div class="inf">
+                        <div class="timeshows">
+                            <div class="timeshows_text">
+                                <!-- <div>
+                                    <span>Rạp chiếu</span>
+                                </div> -->
+                                <div>
+                                    <span>Ngày chiếu</span>
+                                </div>
+                                <div>
+                                    <span>Giờ chiếu</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeshows" style="background-color: #f9f9f9; padding-top: 20px; font-weight: bold; font-size: 18px;">
+                            <div class="timeshows_text">
+                                <!-- <div>
+                                    <span>Beta Thanh Hoá</span>
+                                </div> -->
+                                <div>
+                                    <span>10/10/2023</span>
+                                </div>
+                                <div>
+                                    <span>15:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal_footer">
+                    <a href="./DatVe.html">
+                        <span class="modal_footer--agree">Đồng ý</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/Nguoidung/assets/js/TrangChu.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
