@@ -26,7 +26,7 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required'
         ], [
-            'title.required' => 'Please enter Title',
+            'title.required' => 'Vui lòng nhập tiêu tề tin tức!',
         ]);
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');
