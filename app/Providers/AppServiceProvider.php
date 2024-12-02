@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') != 'local') {
             \URL::forceScheme('https');
         }
-        // Paginator::useBootstrap();
-        // if ($this->app->environment('production')) {
-        //     URL::forceScheme('https');
-        // }
+        Paginator::useBootstrap();
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
         //check that app is local
 //        if ($this->app->isLocal()) {
 //            //if local register your services you require for development
