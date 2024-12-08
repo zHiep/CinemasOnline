@@ -51,24 +51,24 @@
         @include('admin.layout.nav')
         <!-- End Navbar -->
         @if(count($errors) > 0)
-        <div class="alert alert-warning">
+        <div class="alert alert-warning m-4">
             @foreach($errors->all() as $arr)
             {{ $arr }}<br>
             @endforeach
         </div>
         @endif
         @if (session('warning'))
-        <div class="alert alert-warning">
+        <div class="alert alert-warning m-4">
             {{ session('warning') }}
         </div>
         @endif
         @if (session('danger'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger m-4">
             {{ session('danger') }}
         </div>
         @endif
         @if (session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success m-4">
             <span class="alert-icon"><i class="ni ni-like-2"></i></span>
             <span class="alert-text"><strong>Success!</strong> {{ session('success') }}!</span>
         </div>

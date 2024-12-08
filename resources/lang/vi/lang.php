@@ -120,6 +120,7 @@ return [
     'after' => 'Sau',
     'barcode' => 'Mã vạch',
     'book_ticket' => 'Đặt vé',
+    'dashboard' => 'Thống kê',
     //Web
     'movie_schedule' => 'Lịch Chiếu Phim',
     'news_events' => 'Tin Tức/Sự Kiện',
@@ -158,7 +159,7 @@ return [
     'left_align' => 'Căn trái',
     'right_align' => 'Căn phải',
     'row_number' => 'Số cột',
-    'col_number' => 'Số dòng',
+    'col_number' => 'Số hàng',
     'code' => 'Mã',
     'percent' => 'Phần trăm',
     'early_screening' => 'Suất chiếu sớm',

@@ -130,7 +130,8 @@ class AuthController extends Controller
         }else{
             return redirect('/profile')->with('warning',"Mật khẩu cũ không đúng !");
         }
-        return redirect('/signOut')->with('success','Cập nhật mật khẫu thành công');
+        Auth::logout();
+        return redirect('/')->with('success','Cập nhật mật khẩu thành công! Bạn đã bị đăng xuất. Vui lòng đăng nhập lại!');
     }
     public function forgot_password(Request $request){
         $user_email = User::where('email','=',$request['email'])->first();

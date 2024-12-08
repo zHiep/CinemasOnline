@@ -20,7 +20,16 @@ class BannerController extends Controller
     }
 
     public function postCreate(Request $request)
-    {
+    {   
+        // Validate hình ảnh và yêu cầu định dạng
+        $request->validate([
+            'Image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048', // Hình ảnh phải có định dạng hợp lệ và kích thước tối đa 2MB
+        ], [
+            'Image.required' => 'Vui lòng thêm hình ảnh',
+            'Image.image' => 'Tệp tải lên phải là một hình ảnh',
+            'Image.mimes' => 'Hình ảnh phải có định dạng jpeg, jpg, png, hoặc gif',
+            'Image.max' => 'Kích thước hình ảnh tối đa là 2MB',
+        ]);
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');
             $img = $request['image'] = $file;
@@ -38,12 +47,22 @@ class BannerController extends Controller
             return redirect('admin/banners')->with('warning','Vui lòng thêm hình ảnh');
         }
         $banner->save();
-        return redirect('admin/banners');
+        return redirect('admin/banners')->with('success','Thêm banner thành công');
     }
 
     public function postEdit(Request $request, $id)
     {
         $banners = Banner::find($id);
+
+        // Validate hình ảnh và yêu cầu định dạng
+        $request->validate([
+            'Image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048', // Hình ảnh phải có định dạng hợp lệ và kích thước tối đa 2MB
+        ], [
+            'Image.required' => 'Vui lòng thêm hình ảnh',
+            'Image.image' => 'Tệp tải lên phải là một hình ảnh',
+            'Image.mimes' => 'Hình ảnh phải có định dạng jpeg, jpg, png, hoặc gif',
+            'Image.max' => 'Kích thước hình ảnh tối đa là 2MB',
+        ]);
 
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');

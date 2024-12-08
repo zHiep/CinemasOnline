@@ -28,7 +28,31 @@ class TheaterController extends Controller
     }
 
     public function postCreate(Request $request)
-    {
+    {   
+        // Validate các trường
+        $request->validate([
+            'name' => 'required|string|max:255|regex:/^[\p{L}\p{N}\s]+$/u', // Kiểm tra không chứa ký tự đặc biệt
+            'address' => 'required|string|max:255',   // Địa chỉ: bắt buộc, chuỗi và không quá 255 ký tự
+            'city' => 'required|string|max:255',      // Thành phố: bắt buộc, chuỗi và không quá 255 ký tự
+            'location' => 'required|string',  // Vị trí: bắt buộc, chuỗi và không quá 255 ký tự
+        ], [
+            'name.required' => 'Vui lòng nhập tên rạp phim',
+            'name.string' => 'Tên rạp phim phải là chuỗi văn bản',
+            'name.max' => 'Tên rạp phim không được vượt quá 255 ký tự',
+            'name.regex' => 'Tên rạp phim không được chứa ký tự đặc biệt', // Thông báo lỗi nếu tên có ký tự đặc biệt
+            
+            'address.required' => 'Vui lòng nhập địa chỉ',
+            'address.string' => 'Địa chỉ phải là chuỗi văn bản',
+            'address.max' => 'Địa chỉ không được vượt quá 255 ký tự',
+            
+            'city.required' => 'Vui lòng chọn thành phố',
+            'city.string' => 'Thành phố phải là chuỗi văn bản',
+            'city.max' => 'Tên thành phố không được vượt quá 255 ký tự',
+            
+            'location.required' => 'Vui lòng nhập vị trí',
+            'location.string' => 'Vị trí phải là chuỗi văn bản',
+            
+        ]);
         $theater = new Theater([
             'name' => $request->name,
             'address' => $request->address,
@@ -67,7 +91,30 @@ class TheaterController extends Controller
 
     public function postEdit($id, Request $request)
     {
-
+        // Validate các trường
+        $request->validate([
+            'name' => 'required|string|max:255|regex:/^[\p{L}\p{N}\s]+$/u', // Kiểm tra không chứa ký tự đặc biệt
+            'address' => 'required|string|max:255',   // Địa chỉ: bắt buộc, chuỗi và không quá 255 ký tự
+            'city' => 'required|string|max:255',      // Thành phố: bắt buộc, chuỗi và không quá 255 ký tự
+            'location' => 'required|string',  // Vị trí: bắt buộc, chuỗi và không quá 255 ký tự
+        ], [
+            'name.required' => 'Vui lòng nhập tên rạp phim',
+            'name.string' => 'Tên rạp phim phải là chuỗi văn bản',
+            'name.max' => 'Tên rạp phim không được vượt quá 255 ký tự',
+            'name.regex' => 'Tên rạp phim không được chứa ký tự đặc biệt', // Thông báo lỗi nếu tên có ký tự đặc biệt
+            
+            'address.required' => 'Vui lòng nhập địa chỉ',
+            'address.string' => 'Địa chỉ phải là chuỗi văn bản',
+            'address.max' => 'Địa chỉ không được vượt quá 255 ký tự',
+            
+            'city.required' => 'Vui lòng chọn thành phố',
+            'city.string' => 'Thành phố phải là chuỗi văn bản',
+            'city.max' => 'Tên thành phố không được vượt quá 255 ký tự',
+            
+            'location.required' => 'Vui lòng nhập vị trí',
+            'location.string' => 'Vị trí phải là chuỗi văn bản',
+            
+        ]);
         $theater = Theater::find($id);
         $theater->name = $request->name;
         $theater->address = $request->address;

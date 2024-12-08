@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="TheaterCreateModalLabel">Thêm rạp chiếu mới</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
             </div>
             <form action="/admin/theater/create" method="post">
                 @csrf
@@ -104,8 +104,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn bg-gradient-info">Save</button>
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn bg-gradient-info">Lưu</button>
                 </div>
             </form>
         </div>

@@ -40,8 +40,44 @@ class MovieController extends Controller
     }
 
     public function postCreate(Request $request)
-    {
-
+    {   
+    // Validate dữ liệu đầu vào
+    $request->validate([
+        'name' => 'required', // Tên phim là chuỗi và tối đa 255 ký tự
+        'showTime' => 'required|integer|min:1', // Thời gian    chiếu phải là số nguyên dương
+        'releaseDate' => 'required|date|before_or_equal:endDate', // Ngày phát hành hợp lệ và trước hoặc bằng ngày kết thúc
+        'endDate' => 'required|date|after_or_equal:releaseDate', // Ngày kết thúc hợp lệ và sau hoặc bằng ngày phát hành
+        'national' => 'required|string', // Quốc gia là chuỗi, tối đa 100 ký tự
+        'description' => 'required|string', // Mô tả tối đa 2000 ký tự
+        'casts' => 'required|array', // Danh sách diễn viên là mảng
+        'casts.*' => 'exists:casts,id', // Mỗi diễn viên phải tồn tại trong bảng casts
+        'directors' => 'required|array', // Danh sách đạo diễn là mảng
+        'directors.*' => 'exists:directors,id', // Mỗi đạo diễn phải tồn tại trong bảng directors
+        'movieGenres' => 'required|array', // Danh sách thể loại phim là mảng
+        'movieGenres.*' => 'exists:movie_genres,id', // Mỗi thể loại phải tồn tại trong bảng movie_genres
+        'Image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048', // Ảnh là file hợp lệ với kích thước tối đa 2MB
+    ], [
+        // Thông báo lỗi tùy chỉnh
+        'name.required' => 'Vui lòng nhập tên phim.',
+        'showTime.required' => 'Vui lòng nhập thời gian chiếu.',
+        'showTime.integer' => 'Thời gian chiếu phải là một số nguyên.',
+        'releaseDate.required' => 'Vui lòng nhập ngày phát hành.',
+        'releaseDate.before_or_equal' => 'Ngày phát hành phải trước hoặc bằng ngày kết thúc.',
+        'endDate.required' => 'Vui lòng nhập ngày kết thúc.',
+        'endDate.after_or_equal' => 'Ngày kết thúc phải sau hoặc bằng ngày phát hành.',
+        'national.required' => 'Vui lòng nhập quốc gia.',
+        'description.required' => 'Vui lòng nhập mô tả.',
+        'casts.required' => 'Vui lòng chọn ít nhất một diễn viên.',
+        'casts.*.exists' => 'Diễn viên không tồn tại.',
+        'directors.required' => 'Vui lòng chọn ít nhất một đạo diễn.',
+        'directors.*.exists' => 'Đạo diễn không tồn tại.',
+        'movieGenres.required' => 'Vui lòng chọn ít nhất một thể loại phim.',
+        'movieGenres.*.exists' => 'Thể loại phim không tồn tại.',
+        'Image.required' => 'Vui lòng tải lên hình ảnh.',
+        'Image.image' => 'Ảnh tải lên phải là file hình ảnh.',
+        'Image.mimes' => 'Ảnh phải thuộc định dạng jpeg, jpg, png hoặc gif.',
+        'Image.max' => 'Kích thước ảnh không được vượt quá 2MB.',
+    ]);
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');
             $img = $request['image'] = $file;
@@ -93,7 +129,38 @@ class MovieController extends Controller
 
     public function postEdit(Request $request, $id)
     {
-
+    // Validate dữ liệu đầu vào
+    $request->validate([
+        'name' => 'required', // Tên phim là chuỗi và tối đa 255 ký tự
+        'showTime' => 'required|integer|min:1', // Thời gian    chiếu phải là số nguyên dương
+        'releaseDate' => 'required|date|before_or_equal:endDate', // Ngày phát hành hợp lệ và trước hoặc bằng ngày kết thúc
+        'endDate' => 'required|date|after_or_equal:releaseDate', // Ngày kết thúc hợp lệ và sau hoặc bằng ngày phát hành
+        'national' => 'required|string', // Quốc gia là chuỗi, tối đa 100 ký tự
+        'description' => 'required|string|', // Mô tả tối đa 2000 ký tự
+        'casts' => 'required|array', // Danh sách diễn viên là mảng
+        'casts.*' => 'exists:casts,id', // Mỗi diễn viên phải tồn tại trong bảng casts
+        'directors' => 'required|array', // Danh sách đạo diễn là mảng
+        'directors.*' => 'exists:directors,id', // Mỗi đạo diễn phải tồn tại trong bảng directors
+        'movieGenres' => 'required|array', // Danh sách thể loại phim là mảng
+        'movieGenres.*' => 'exists:movie_genres,id', // Mỗi thể loại phải tồn tại trong bảng movie_genres
+    ], [
+        // Thông báo lỗi tùy chỉnh
+        'name.required' => 'Vui lòng nhập tên phim.',
+        'showTime.required' => 'Vui lòng nhập thời gian chiếu.',
+        'showTime.integer' => 'Thời gian chiếu phải là một số nguyên.',
+        'releaseDate.required' => 'Vui lòng nhập ngày phát hành.',
+        'releaseDate.before_or_equal' => 'Ngày phát hành phải trước hoặc bằng ngày kết thúc.',
+        'endDate.required' => 'Vui lòng nhập ngày kết thúc.',
+        'endDate.after_or_equal' => 'Ngày kết thúc phải sau hoặc bằng ngày phát hành.',
+        'national.required' => 'Vui lòng nhập quốc gia.',
+        'description.required' => 'Vui lòng nhập mô tả.',
+        'casts.required' => 'Vui lòng chọn ít nhất một diễn viên.',
+        'casts.*.exists' => 'Diễn viên không tồn tại.',
+        'directors.required' => 'Vui lòng chọn ít nhất một đạo diễn.',
+        'directors.*.exists' => 'Đạo diễn không tồn tại.',
+        'movieGenres.required' => 'Vui lòng chọn ít nhất một thể loại phim.',
+        'movieGenres.*.exists' => 'Thể loại phim không tồn tại.'
+    ]);
         $movie = Movie::find($id);
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');
@@ -134,10 +201,20 @@ class MovieController extends Controller
 
     public function delete($id)
     {
+        // Tìm phim trong cơ sở dữ liệu
         $movie = Movie::find($id);
-        Cloudinary::destroy($movie['image']);
-        $movie->delete();
-        return response()->json(['success' => 'Xóa thành công!']);
+
+        // Kiểm tra nếu phim không tồn tại
+        if (!$movie) {
+            return response()->json(['error' => 'Phim không tồn tại!'], 404);
+        }
+
+        // Nếu không có ràng buộc, thực hiện xóa phim
+        Cloudinary::destroy($movie['image']);  // Xóa ảnh khỏi Cloudinary
+        $movie->delete();  // Xóa phim trong cơ sở dữ liệu
+
+        // Trả về phản hồi thành công
+        return response()->json(['success' => 'Xóa phim thành công!']);
     }
 
     public function status(Request $request)

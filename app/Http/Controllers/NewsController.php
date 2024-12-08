@@ -23,10 +23,21 @@ class NewsController extends Controller
 
     public function postCreate(Request $request)
     {
+        // Validate các trường dữ liệu
         $request->validate([
-            'title' => 'required'
+            'title' => 'required|max:255',  // Tiêu đề là bắt buộc và tối đa 255 ký tự
+            'contents' => 'required',       // Nội dung là bắt buộc
+            'Image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Kiểm tra ảnh hợp lệ, chỉ nhận các loại hình ảnh và dung lượng tối đa 2MB
         ], [
-            'title.required' => 'Vui lòng nhập tiêu tề tin tức!',
+            'title.required' => 'Vui lòng nhập tiêu đề tin tức!',
+            'title.max' => 'Tiêu đề tin tức không được vượt quá 255 ký tự!',
+            
+            'contents.required' => 'Vui lòng nhập nội dung tin tức!',
+            
+            'Image.required' => 'Vui lòng nhập hình ảnh!',
+            'Image.image' => 'Tệp hình ảnh phải là một ảnh!',
+            'Image.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif, svg!',
+            'Image.max' => 'Dung lượng hình ảnh không được vượt quá 2MB!',
         ]);
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');
@@ -49,17 +60,28 @@ class NewsController extends Controller
             return redirect('admin/news')->with('warning','Vui lòng nhập hình ảnh');
         }
         $news->save();
-        return redirect('admin/news')->with('success', 'Added Successfully!');
+        return redirect('admin/news')->with('success', 'Thêm tin tức thành công!');
     }
 
     public function postEdit(Request $request, $id)
     {
         $news = News::find($id);
 
+        // Validate các trường dữ liệu
         $request->validate([
-            'title' => 'required'
+            'title' => 'required|max:255',  // Tiêu đề là bắt buộc và tối đa 255 ký tự
+            'contents' => 'required',       // Nội dung là bắt buộc
+            'Image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Kiểm tra ảnh hợp lệ, chỉ nhận các loại hình ảnh và dung lượng tối đa 2MB
         ], [
-            'title.required' => "Please enter Title"
+            'title.required' => 'Vui lòng nhập tiêu đề tin tức!',
+            'title.max' => 'Tiêu đề tin tức không được vượt quá 255 ký tự!',
+            
+            'contents.required' => 'Vui lòng nhập nội dung tin tức!',
+            
+            'Image.required' => 'Vui lòng nhập hình ảnh!',
+            'Image.image' => 'Tệp hình ảnh phải là một ảnh!',
+            'Image.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif, svg!',
+            'Image.max' => 'Dung lượng hình ảnh không được vượt quá 2MB!',
         ]);
         $request['user_id'] = Auth::user()['id'];
         $request['content'] = $request->contents;
@@ -76,7 +98,7 @@ class NewsController extends Controller
             $request['image'] = $cloud;
         }
         $news->update($request->all());
-        return redirect('admin/news')->with('success', 'Updated Successfully!');
+        return redirect('admin/news')->with('success', 'Cập nhật tin tức thành công!');
     }
 
     public function delete($id)
@@ -84,7 +106,7 @@ class NewsController extends Controller
         $news = News::find($id);
         Cloudinary::destroy($news['image']);
         $news->delete();
-        return response()->json(['success' => 'Delete Successfully']);
+        return response()->json(['success' => 'Xóa tin tức thành công!']);
     }
     public function status(Request $request){
         $news = News::find($request->news_id);

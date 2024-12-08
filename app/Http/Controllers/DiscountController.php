@@ -14,41 +14,57 @@ class DiscountController extends Controller
     }
     public function postCreate(Request $request){
         $request->validate([
-            'name'=>'required',
-            'code' => 'required|unique:discounts',
-            'percent'=>'numeric|min:0|max:100'
+            'name' => 'required|string|max:255|regex:/^[\p{L}\p{N}\s]+$/u',  // Kiểm tra trường tên
+            'code' => 'required|string|unique:discounts,code|max:50',  // Kiểm tra mã giảm giá không trùng
+            'percent' => 'required|numeric|min:5|max:100',  // Kiểm tra tỷ lệ phần trăm giảm giá hợp lệ
+            'quantity' => 'required|numeric|min:1'
         ], [
-            'name.required'=>'Please enter name',
-            'code.required' => "Please enter code",
-            'code.unique' => 'Code exists',
-            'percent.max'=>"Maximum discount code is 100",
-            'percent.min'=>"Minimum discount code is 0"
+            'name.required' => 'Vui lòng nhập tên.',
+            'name.regex' => 'Tên không chứa ký tự đặc biệt.',
+            'code.required' => 'Vui lòng nhập mã code.',
+            'code.unique' => 'Code đã tồn tại.',
+            'code.max' => 'Mã code không quá 50 ký tự.',
+            'percent.required' => 'Vui lòng nhập giá trị giảm giá.',
+            'percent.numeric' => 'Giá trị giảm phải là số.',
+            'percent.min' => 'Giá trị giảm giá không dưới 5%',
+            'percent.max' => 'Giá trị giảm giá tối đa là 100%.',
+            'quantity.required' => 'Vui lòng nhập số lượng',
+            'quantity.min' => 'Số lượng không được âm.'
         ]);
         Discount::create($request->all());
-        return redirect('admin/discount')->with('success', 'Added Successfully!');
+        return redirect('admin/discount')->with('success', 'Thêm mã khuyến mãi thành công!');
     }
     public function postEdit(Request $request,$id){
         $discount = Discount::find($id);
         $request->validate([
-            'code' => 'required',
-            'percent'=>'numeric|min:0|max:100'
+            'name' => 'required|string|max:255|regex:/^[\p{L}\p{N}\s]+$/u',  
+            'code' => 'required|string|max:50',  
+            'percent' => 'required|numeric|min:5|max:100',  
+            'quantity' => 'required|numeric|min:1'
         ], [
-            'code.required' => "Please enter code",
-            'percent.max'=>"Maximum discount code is 100",
-            'percent.min'=>"Minimum discount code is 0"
+            'name.required' => 'Vui lòng nhập tên.',
+            'name.regex' => 'Tên không chứa ký tự đặc biệt.',
+            'code.required' => 'Vui lòng nhập mã code.',
+            'code.max' => 'Mã code không quá 50 ký tự.',
+            'percent.required' => 'Vui lòng nhập giá trị giảm giá.',
+            'percent.numeric' => 'Giá trị giảm phải là số.',
+            'percent.min' => 'Giá trị giảm giá không dưới 5%',
+            'percent.max' => 'Giá trị giảm giá tối đa là 100%.',
+            'quantity.required' => 'Vui lòng nhập số lượng',
+            'quantity.min' => 'Số lượng không được âm.'
         ]);
         $discount->update($request->all());
-        return redirect('admin/discount')->with('success', 'Update Successfully!');
+        return redirect('admin/discount')->with('success', 'Cập nhật khuyến mãi thành công!');
     }
     public function delete($id)
     {
         $discount = Discount::find($id);
         if($discount['status'] ==0){
             Discount::destroy($id);
-            return response()->json(['success' => 'Delete Successfully']);
+            return response()->json(['success' => 'Xóa khuyến mãi thành công!']);
         }
         else{
-            return response()->json(['error' => "Please change status to offline" ]);
+            return response()->json(['error' => "Vui lòng chuyển trạng thái sang offline" ]);
         }
     }
     public function status(Request $request){

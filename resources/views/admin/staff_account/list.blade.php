@@ -11,7 +11,7 @@
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <button style="float:right;padding-right:30px;" class="me-5  btn bg-gradient-primary float-right mb-3" data-bs-toggle="modal" data-bs-target="#staff">
-                            Create
+                            Thêm nhân viên
                         </button>
                         <table class="table align-items-center mb-0 ">
                             <thead>

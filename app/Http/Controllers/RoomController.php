@@ -13,7 +13,36 @@ use Illuminate\Http\Request;
 class RoomController extends Controller
 {
     public function postCreate(Request $request)
-    {
+    {   
+        // Validate các trường cần thiết
+        $request->validate([
+            'name' => 'required|string|max:255|unique:rooms|regex:/^[\p{L}\p{N}\s]+$/u', // Kiểm tra không chứa ký tự đặc biệt
+            'roomType' => 'required', 
+            'theaterId' => 'required', 
+            'row' => 'required|integer|min:1|max:24', // Số hàng phải là số nguyên trong khoảng từ 1 đến 26 (do dùng mã chữ cái A-Z)
+            'col' => 'required|integer|min:1|max:50', // Số cột phải là số nguyên trong khoảng từ 1 đến 20
+        ], [
+            'name.required' => 'Vui lòng nhập tên phòng.',
+            'name.string' => 'Tên phòng phải là chuỗi văn bản.',
+            'name.max' => 'Tên phòng không được vượt quá 255 ký tự.',
+            'name.regex' => 'Tên phòng không được chứa ký tự đặc biệt', // Thông báo lỗi nếu tên có ký tự đặc biệt
+            'name.unique' => 'Tên phòng đã tồn tại.',
+
+            'roomType.required' => 'Vui lòng chọn loại phòng.',
+            
+            'theaterId.required' => 'Vui lòng chọn rạp chiếu.',
+            
+            'row.required' => 'Vui lòng nhập số hàng.',
+            'row.integer' => 'Số hàng phải là số nguyên.',
+            'row.min' => 'Số hàng phải ít nhất là 1.',
+            'row.max' => 'Số hàng tối đa là 24.',
+            
+            'col.required' => 'Vui lòng nhập số cột.',
+            'col.integer' => 'Số cột phải là số nguyên.',
+            'col.min' => 'Số cột phải ít nhất là 1.',
+            'col.max' => 'Số cột tối đa là 50.',
+        ]);
+
         $roomType = RoomType::find($request->roomType);
         $theater = Theater::find($request->theaterId);
         //        dd($roomType->id);
@@ -26,7 +55,7 @@ class RoomController extends Controller
         $room->save();
 
 
-        for ($i = 65; $i <= (65 + $request->row); $i++) {
+        for ($i = 65; $i <= (65 + $request->row-1); $i++) {
             for ($j = 1; $j <= $request->col; $j++) {
                 $seat = new Seat([
                     'row' => chr($i),
@@ -41,9 +70,9 @@ class RoomController extends Controller
                 $seat->save();
             }
         }
-
         return redirect('admin/theater')->with('success', 'Thêm mới phòng tại ' . $theater->name . ' thành công!');
     }
+
     public function status(Request $request)
     {
         $room = Room::find($request->room_id);         
@@ -65,13 +94,13 @@ class RoomController extends Controller
     }
 
     public function postEdit($id, Request $request) {
+        // Validate các trường cần thiết
         $room = Room::find($id);
         if ($room) {
             $room->name = $request->name;
             $room->roomType_id = $request->type;
             $room->save();
         }
-
         return redirect('admin/seat/' . $id)->with('success', 'Cập nhật thông tin phòng thành công!');
     }
 }

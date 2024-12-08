@@ -140,7 +140,7 @@
                                                 <option value="Iceland">Nước Iceland</option>
                                                 <option value="India">Ấn Độ</option>
                                                 <option value="Indonesia">Indonesia</option>
-                                                <option value="Iran, Islamic Republic of">Iran (Cộng hòa Hồi giáo</option>
+                                                <option value="Iran, Islamic Republic of">Iran (Cộng hòa Hồi giáo)</option>
                                                 <option value="Iraq">I-rắc</option>
                                                 <option value="Ireland">Ireland</option>
                                                 <option value="Isle of Man">Đảo Man</option>

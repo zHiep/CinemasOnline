@@ -536,7 +536,7 @@ class WebController extends Controller
             });
             return redirect('/profile')->with('success', 'Vui lòng kiểm tra mail để kích hoạt !');
         }
-        return redirect('/profile')->with('success', 'Update profile successfully!');
+        return redirect('/profile')->with('success', 'Cập nhật thông tin cá nhân thành công!');
     }
 
     public function contact()

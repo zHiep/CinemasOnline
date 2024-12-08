@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="RoomCreateModalLabel">@lang('lang.edit') @lang('lang.theater')</h1>
+                <h1 class="modal-title fs-5" id="RoomCreateModalLabel">@lang('lang.add') @lang('lang.room')</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="admin/room/create" method="post">
@@ -14,21 +14,21 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="name" class="form-label">@lang('lang.room_name')</label>
-                                <input class="form-control" id="name" type="text" name="name" placeholder="type name...">
+                                <input class="form-control" id="name" type="text" name="name" placeholder="Tên phòng...">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="row" class="form-label">@lang('lang.row_number')</label>
+                                <label for="row" class="form-label">@lang('lang.col_number')</label>
                                 <input class="form-control" id="row" type="number" name="row" min="0" max="24"
-                                       placeholder="type row...">
+                                       placeholder="Số hàng..">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="col" class="form-control-label">@lang('lang.col_number')</label>
+                                <label for="col" class="form-control-label">@lang('lang.row_number')</label>
                                 <input class="form-control" id="col" type="number" name="col" min="0" max="50"
-                                       placeholder="type col...">
+                                       placeholder="Số cột...">
                             </div>
                         </div>
                         <div class="col-3">

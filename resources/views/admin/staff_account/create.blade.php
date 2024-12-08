@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>theater</label>
+                                    <label>@lang('lang.theater')</label>
                                     <select id="t" aria-label="" class="form-control" name="theater_id">
                                         @foreach($theaters as $theater)
                                             <option value="{{$theater->id}}">{{$theater->name}}</option>

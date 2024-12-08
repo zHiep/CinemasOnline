@@ -121,6 +121,7 @@ return [
     'after' => 'After',
     'barcode' => 'Barcode',
     'book_ticket' => 'Book',
+    'dashboard' => 'Dashboard',
     //Web
     'movie_schedule' => 'Movie Schedule',
     'news_events' => 'News/Events',

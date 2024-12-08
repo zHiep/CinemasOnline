@@ -16,12 +16,10 @@
                                 <table class="table table-bordered align-items-center text-center">
                                     <thead class="table-primary">
                                     <tr>
-                                        <th class="text-uppercase font-weight-bolder"></th>
-                                        <th class="text-uppercase font-weight-bolder"></th>
-                                        <th class="text-uppercase font-weight-bolder">@lang('lang.student')</th>
+                                        <!-- <th class="text-uppercase font-weight-bolder">@lang('lang.student')</th>
                                         <th class="text-uppercase font-weight-bolder">@lang('lang.adult')</th>
-                                        <th class="text-uppercase font-weight-bolder">@lang('lang.old_child')</th>
-                                        <th class="text-uppercase font-weight-bolder">@lang('lang.member_online')</th>
+                                        <th class="text-uppercase font-weight-bolder">@lang('lang.old_child')</th> -->
+                                        <th class="text-uppercase font-weight-bolder" colspan="6">@lang('lang.member_online')</th>
                                     </tr>
                                     </thead>
                                     <tbody class="table-light">
@@ -32,26 +30,6 @@
                                         <td>@lang('lang.before') 17h</td>
                                         <td>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" name="hssv2345t17" value="{{ $hssv2345t17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nl2345t17" value="{{ $nl2345t17 }}" aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nctte2345t17" value="{{ $nctte2345t17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
                                                 <input type="number" class="form-control" name="vtt2345t17" value="{{ $vtt2345t17 }}" aria-label="">
                                                 <span class="input-group-text">đ</span>
                                             </div>
@@ -59,26 +37,6 @@
                                     </tr>
                                     <tr>
                                         <td>@lang('lang.after') 17h</td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="hssv2345s17" value="{{ $hssv2345s17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nl2345s17" value="{{ $nl2345s17 }}" aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nctte2345s17" value="{{ $nctte2345s17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" name="vtt2345s17" value="{{ $vtt2345s17 }}"
@@ -94,27 +52,6 @@
                                         <td>@lang('lang.before') 17h</td>
                                         <td>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" name="hssv67cnt17" value="{{ $hssv67cnt17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nl67cnt17" value="{{ $nl67cnt17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nctte67cnt17" value="{{ $nctte67cnt17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
                                                 <input type="number" class="form-control" name="vtt67cnt17" value="{{ $vtt67cnt17 }}"
                                                        aria-label="">
                                                 <span class="input-group-text">đ</span>
@@ -123,26 +60,6 @@
                                     </tr>
                                     <tr>
                                         <td>@lang('lang.after') 17h</td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="hssv67cns17" value="{{ $hssv67cns17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nl67cns17" value="{{ $nl67cns17 }}" aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="nctte67cns17" value="{{ $nctte67cns17 }}"
-                                                       aria-label="">
-                                                <span class="input-group-text">đ</span>
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" name="vtt67cns17" value="{{ $vtt67cns17 }}"
@@ -159,7 +76,7 @@
                                         </th>
                                     </tr>
                                     </thead>
-                                    <tbody class="table-light">
+                                    <tbody class="table-light ">
                                     @foreach($roomTypes as $roomType)
                                         <tr>
                                             <td class="text-end">

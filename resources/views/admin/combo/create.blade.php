@@ -46,7 +46,7 @@
                                     <button type="button" class="btn btn-danger mb-0 delete_food"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
-                            <button type="button" class="btn m-1 btn-primary add_food">ADD FOOD</button>
+                            <button type="button" class="btn btn-primary add_food">ADD FOOD</button>
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Thông tin phòng</h6>
+                            <h6>@lang('lang.information') @lang('lang.room')</h6>
                         </div>
                         <div class="card-body">
                             <form action="admin/room/edit/{{$room->id}}" method="POST">
@@ -14,14 +14,14 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="name">Email address</label>
+                                            <label for="name">@lang('lang.room_name')</label>
                                             <input id="name" type="text" name="name" class="form-control"
-                                                   placeholder="Name..." value="{{$room->name}}">
+                                                   placeholder="Tên phòng..." value="{{$room->name}}">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="type">Room type</label>
+                                            <label for="type">@lang('lang.room_type')</label>
                                             <select class="form-control" name="type" id="type">
                                                 @foreach($roomTypes as $type)
                                                     <option value="{{$type->id}}"
@@ -33,7 +33,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary float-end">save</button>
+                                <button type="submit" class="btn btn-primary float-end">@lang('lang.save')</button>
                             </form>
                         </div>
                     </div>

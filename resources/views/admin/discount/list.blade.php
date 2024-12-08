@@ -8,7 +8,7 @@
                         <div class="card-header pb-0">
                             <h6>@lang('lang.discount')</h6>
                         </div>
-                        @if(count($errors)>0)
+                        <!-- @if(count($errors)>0)
                             <div class="alert alert-warning">
                                 @foreach($errors->all() as $arr)
                                     {{$arr}}<br>
@@ -19,7 +19,7 @@
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
-                        @endif
+                        @endif -->
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <a style="float:right;padding-right:30px;" class="text-light">

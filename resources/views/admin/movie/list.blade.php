@@ -30,7 +30,7 @@
                                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">@lang('lang.end_date')</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@lang('lang.status')</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                                    {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>--}}
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,12 +81,12 @@
                                             <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                         </a>
                                     </td>
-                                    <!-- {{-- <td class="align-middle">--}}
-                                    {{-- <a href="javascript:;" data-url="{{ url('admin/movie/delete', $movie['id'] ) }}" class="text-secondary font-weight-bold text-xs delete-movie" data-toggle="tooltip"--}}
-                                    {{-- data-original-title="Delete movie">--}}
-                                    {{-- <i class="fa-solid fa-trash-can fa-lg"></i>--}}
-                                    {{-- </a>--}}
-                                    {{-- </td>--}} -->
+                                    <td class="align-middle">
+                                    <a href="javascript:;" data-url="{{ url('admin/movie/delete', $movie['id'] ) }}" class="text-secondary font-weight-bold text-xs delete-movie" data-toggle="tooltip"--}}
+                                    data-original-title="Delete movie">
+                                    <i class="fa-solid fa-trash-can fa-lg"></i>
+                                    </a>
+                                    </td>
                                 </tr>
 
                                 @endforeach
@@ -106,35 +106,44 @@
 @endcan
 @endsection
 @section('scripts')
-<!-- {{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            $.ajaxSetup({--}}
-{{--                headers: {--}}
-{{--                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-{{--                }--}}
-{{--            });--}}
-{{--            $('.delete-movie').on('click', function () {--}}
-{{--                var userURL = $(this).data('url');--}}
-{{--                var trObj = $(this);--}}
-{{--                if (confirm("Are you sure you want to remove it?") === true) {--}}
-{{--                    $.ajax({--}}
-{{--                        url: userURL,--}}
-{{--                        type: 'DELETE',--}}
-{{--                        dataType: 'json',--}}
-{{--                        success: function (data) {--}}
-{{--                            if (data['success']) {--}}
-{{--                                // alert(data.success);--}}
-{{--                                trObj.parents("tr").remove();--}}
-{{--                            } else if (data['error']) {--}}
-{{--                                alert(data.error);--}}
-{{--                            }--}}
-{{--                        }--}}
-{{--                    });--}}
-{{--                }--}}
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.delete-movie').on('click', function () {
+            var userURL = $(this).data('url');
+            var trObj = $(this);
+            console.log(userURL);
+            if (confirm("Bạn chắc chắn muốn xóa phim này?") === true) {
+                    $.ajax({
+                    url: userURL,
+                    type: 'DELETE',
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (data) {
+                        if (data['success']) {
+                            trObj.parents("tr").remove();
+                            alert(data.success);
+                        } else if (data['error']) {
+                            alert(data.error);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Phim đang có ràng buộc, không thể xóa!');
+                        console.log('Error:', error); // Debug lỗi từ server
+                        console.log('Response:', xhr.responseText);
+                    }
+                });
+            }
 
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}} -->
+        });
+    });
+</script>
 <script>
     $(document).ready(function() {
         $.ajaxSetup({
