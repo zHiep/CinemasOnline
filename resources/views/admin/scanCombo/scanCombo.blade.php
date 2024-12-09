@@ -104,6 +104,15 @@
 
                 try {
                     barcodeScanner = await scanbotSDK.createBarcodeScanner(config);
+                    const divElement = document.querySelector('#barcode-scanner-container div[style*="position: relative"]');
+
+                    // Kiểm tra nếu phần tử tồn tại, thay đổi thuộc tính position
+                    if (divElement) {
+                        divElement.style.position = ""; // Loại bỏ thuộc tính position
+                        console.log('Đã loại bỏ position: relative');
+                    } else {
+                        console.log('Không tìm thấy thẻ div với position: relative');
+                    }
                 } catch (e) {
                     console.log(e.name + ': ' + e.message);
                     alert(e.name + ': ' + e.message);
