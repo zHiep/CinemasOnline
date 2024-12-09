@@ -57,7 +57,7 @@ class MovieController extends Controller
             'casts.*' => 'exists:casts,id', // Mỗi diễn viên phải tồn tại trong bảng casts
             'directors' => 'required|array', // Danh sách đạo diễn là mảng
             'directors.*' => 'exists:directors,id', // Mỗi đạo diễn phải tồn tại trong bảng directors
-            'directors.*' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+            // 'directors.*' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
             'movieGenres' => 'required|array', // Danh sách thể loại phim là mảng
             'movieGenres.*' => 'exists:movie_genres,id', // Mỗi thể loại phải tồn tại trong bảng movie_genres
             'Image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048', // Ảnh là file hợp lệ với kích thước tối đa 2MB
@@ -76,7 +76,7 @@ class MovieController extends Controller
             'casts.*.exists' => 'Diễn viên không tồn tại.',
             'directors.required' => 'Đạo diễn không được để trống!',
             'directors.*.exists' => 'Đạo diễn không tồn tại.',
-            'directors.*.regex' => 'Đạo diễn chỉ được nhập chữ cái và khoảng trắng.', // Thông báo lỗi tùy chỉnh
+            // 'directors.*.regex' => 'Đạo diễn chỉ được nhập chữ cái và khoảng trắng.', // Thông báo lỗi tùy chỉnh
             'movieGenres.required' => 'Vui lòng chọn ít nhất một thể loại phim.',
             'movieGenres.*.exists' => 'Thể loại phim không tồn tại.',
             'Image.required' => 'Vui lòng tải lên hình ảnh.',
