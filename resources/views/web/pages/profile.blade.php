@@ -15,15 +15,18 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                     <h4 class="text-center">{!! $user['fullName'] !!}</h4>
                 </div>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="account-tab" href="#account" data-bs-toggle="collapse" data-bs-target="#account" aria-expanded="true" aria-controls="account">
+                    <a class="nav-link active" id="account-tab" href="#account" data-bs-toggle="collapse"
+                        data-bs-target="#account" aria-expanded="true" aria-controls="account">
                         <i class="fa fa-home text-center mr-1"></i>
                         @lang('lang.account')
                     </a>
-                    <a class="nav-link" id="password-tab" href="#password" data-bs-toggle="collapse" data-bs-target="#password" aria-expanded="false">
+                    <a class="nav-link" id="password-tab" href="#password" data-bs-toggle="collapse"
+                        data-bs-target="#password" aria-expanded="false">
                         <i class="fa fa-key text-center mr-1"></i>
                         @lang('lang.password')
                     </a>
-                    <a class="nav-link" id="notification-tab" href="#notification" data-bs-toggle="collapse" data-bs-target="#notification" aria-expanded="false">
+                    <a class="nav-link" id="notification-tab" href="#notification" data-bs-toggle="collapse"
+                        data-bs-target="#notification" aria-expanded="false">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                         @lang('lang.transaction_history')
                     </a>
@@ -37,7 +40,8 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                             <div aria-labelledby="account-tab">
                                 <h4 class="text-center">@lang('lang.membership_card')</h4>
                                 <div class="text-center">
-                                    <img src="data:image/png;base64,{!! base64_encode($generatorPNG->getBarcode($user['code'],$generatorPNG::TYPE_CODE_128)) !!}" />
+                                    <img
+                                        src="data:image/png;base64,{!! base64_encode($generatorPNG->getBarcode($user['code'],$generatorPNG::TYPE_CODE_128)) !!}" />
                                 </div>
                                 <div class="text-center">
                                     {!! $user['code'] !!}
@@ -46,13 +50,15 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>@lang('lang.fullname')</label>
-                                            <input type="text" class="form-control" name="fullName" required value="{!! $user['fullName'] !!}" aria-label="">
+                                            <input type="text" class="form-control" name="fullName" required
+                                                value="{!! $user['fullName'] !!}" aria-label="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" name="email" value="{!! $user['email'] !!}" aria-label="">
+                                            <input type="email" class="form-control" name="email"
+                                                value="{!! $user['email'] !!}" aria-label="">
                                             <labeL class="text-danger">
                                                 @if(isset($user['email']) && $user['email_verified']== 0)
                                                 @lang('lang.active_email')
@@ -63,7 +69,8 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>@lang('lang.phone')</label>
-                                            <input type="text" class="form-control" name="phone" value="{!! $user['phone'] !!}" aria-label="">
+                                            <input type="text" class="form-control" name="phone"
+                                                value="{!! $user['phone'] !!}" aria-label="">
                                         </div>
                                     </div>
                                     <div class="col-md-12 ">
@@ -72,13 +79,12 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                         </div>
                                         <div class="col">
                                             <div class="progress">
-                                                <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{!! $sum_percent !!}" aria-valuemin="0" aria-valuemax="100" 
-                                                @if($sum_percent <100) 
-                                                style="width:{!! $sum_percent !!}%" 
-                                                @else 
-                                                style="width:100%" 
-                                                @endif>
-                                                    @if($sum_percent < 100) {!! round($sum_percent) !!}% @else 100% @endif </div>
+                                                <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" aria-valuenow="{!! $sum_percent !!}"
+                                                    aria-valuemin="0" aria-valuemax="100" @if($sum_percent <100)
+                                                    style="width:{!! $sum_percent !!}%" @else style="width:100%" @endif>
+                                                    @if($sum_percent < 100) {!! round($sum_percent) !!}% @else 100%
+                                                        @endif </div>
                                                 </div>
                                             </div>
 
@@ -91,7 +97,8 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                                 <thead>
                                                     <tr>
                                                         <th class="text-xxs text-center">@lang('lang.card_level')</th>
-                                                        <th class="text-xxs text-center">@lang('lang.total_spending')</th>
+                                                        <th class="text-xxs text-center">@lang('lang.total_spending')
+                                                        </th>
                                                         <th class="text-xxs text-center">@lang('lang.point')</th>
                                                     </tr>
                                                 </thead>
@@ -99,8 +106,10 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                                     <tr>
                                                         <td class="text-center">
                                                             @if($sum < 4000000) Member @else Vip @endif </td>
-                                                        <td class="text-center">{!! number_format($sum,0,",",".") !!} VNĐ</td>
-                                                        <td class="text-center">{!! number_format($user['point'],0,",",".") !!} P</td>
+                                                        <td class="text-center">{!! number_format($sum,0,",",".") !!}
+                                                            VNĐ</td>
+                                                        <td class="text-center">{!!
+                                                            number_format($user['point'],0,",",".") !!} P</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -121,7 +130,8 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>@lang('lang.old_password')</label>
-                                            <input type="password" name="oldpassword" class="form-control">
+                                            <input type="password" name="oldpassword" class="form-control"
+                                                placeholder="Mật khẩu hiện tại">
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +161,8 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                             <div class="container ">
                                 @foreach($sort_ticket as $value)
                                 @if(isset($value['schedule']['movie']['image']))
-                                <p style="margin-top: 10px!important;">@lang('lang.ticket_code'): {!! $value['code'] !!} <span>
+                                <p style="margin-top: 10px!important;">@lang('lang.ticket_code'): {!! $value['code'] !!}
+                                    <span>
                                         (@lang('lang.status'):
                                         @if($value['holdState'] == 0 && $value['status'] ==1)
                                         @lang('lang.ticket_success'))
@@ -159,13 +170,16 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                         @lang('lang.ticket_unSuccess'))
                                         @else
                                         @lang('lang.ticket_success'))
-                                        @endif</span> </p>
+                                        @endif</span>
+                                </p>
                                 <div class="float-start">
 
                                     @if(strstr($value['schedule']['movie']['image'],"https") == "")
-                                    <img style="width: auto;height: 320px;" src="https://res.cloudinary.com/{!! $cloud_name !!}/image/upload/{!! $value['schedule']['movie']['image'] !!}.jpg">
+                                    <img style="width: auto;height: 320px;"
+                                        src="https://res.cloudinary.com/{!! $cloud_name !!}/image/upload/{!! $value['schedule']['movie']['image'] !!}.jpg">
                                     @else
-                                    <img style="width: auto;height: 320px;" src="{!! $value['schedule']['movie']['image'] !!}">
+                                    <img style="width: auto;height: 320px;"
+                                        src="{!! $value['schedule']['movie']['image'] !!}">
                                     @endif
 
 
@@ -180,7 +194,9 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                             @else bg-info
                                             @endif me-1"> {!! $value['schedule']['movie']['rating']['name'] !!} </p>
                                     <p>{!! date("d/m/Y",strtotime($value['schedule']['date'] )) !!}</p>
-                                    <p>@lang('lang.from') {!! date("H:i A",strtotime($value['schedule']['startTime'] )) !!} ~ @lang('lang.to') {!! date("H:i A",strtotime($value['schedule']['endTime'] )) !!}</p>
+                                    <p>@lang('lang.from') {!! date("H:i A",strtotime($value['schedule']['startTime'] ))
+                                        !!} ~ @lang('lang.to') {!! date("H:i A",strtotime($value['schedule']['endTime']
+                                        )) !!}</p>
                                     <p>{!! $value['schedule']['room']['theater']['name'] !!}</p>
                                     <p>{!! $value['schedule']['room']['name'] !!}
                                         (
@@ -195,8 +211,11 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
                                     </p>
                                     <p>{!! number_format($value['totalPrice'],0,",",".") !!}</p>
                                     @if($value['holdState'] == 0)
-                                    <button href="#profileModal" data-toggle="tooltip" data-bs-target="#profileModal{!! $value['id'] !!}" data-bs-toggle="modal" class="btn btn-warning">@lang('lang.detail')</button>
-                                    <a href="/tickets/completed/{!! $value['id'] !!}" class="btn btn-warning"><i class="fa-solid fa-ticket"></i></a>
+                                    <button href="#profileModal" data-toggle="tooltip"
+                                        data-bs-target="#profileModal{!! $value['id'] !!}" data-bs-toggle="modal"
+                                        class="btn btn-warning">@lang('lang.detail')</button>
+                                    <a href="/tickets/completed/{!! $value['id'] !!}" class="btn btn-warning"><i
+                                            class="fa-solid fa-ticket"></i></a>
                                     @else
                                     <button class="btn btn-warning" disabled>X</button>
                                     @endif

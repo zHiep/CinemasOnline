@@ -13,29 +13,29 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>@lang('lang.fullname')</label>
-                                    <input aria-label="" id="fn" class="form-control" type="text" value="" name="fullName"
-                                           placeholder="@lang('lang.type') @lang('lang.fullname')">
+                                    <input aria-label="" id="fn" class="form-control" type="text" value=""
+                                        name="fullName" placeholder="Nhập họ tên">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input aria-label="" id="e" class="form-control" type="email" value="" name="email"
-                                           placeholder="@lang('lang.type') Email">
+                                        placeholder="Email">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>@lang('lang.phone')</label>
                                     <input aria-label="" id="p" class="form-control" type="text" value="" name="phone"
-                                           placeholder="@lang('lang.type') @lang('lang.phone')">
+                                        placeholder="@lang('lang.type') @lang('lang.phone')">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>@lang('lang.password')</label>
-                                    <input aria-label="" id="rp" class="form-control" type="password" value="" name="password"
-                                           placeholder="@lang('lang.type') @lang('lang.password')">
+                                    <input aria-label="" id="rp" class="form-control" type="password" value=""
+                                        name="password" placeholder="Mật khẩu">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -43,7 +43,7 @@
                                     <label>@lang('lang.theater')</label>
                                     <select id="t" aria-label="" class="form-control" name="theater_id">
                                         @foreach($theaters as $theater)
-                                            <option value="{{$theater->id}}">{{$theater->name}}</option>
+                                        <option value="{{$theater->id}}">{{$theater->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
