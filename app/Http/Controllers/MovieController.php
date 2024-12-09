@@ -21,7 +21,10 @@ class MovieController extends Controller
 
     public function movie()
     {
-        $movies = Movie::orderBy('id', 'DESC')->Paginate(5);
+        $movies = Movie::orderBy('status', 'DESC') // Sắp xếp các phim có status = 1 lên đầu
+               ->orderBy('id', 'DESC')     // Sau đó sắp xếp theo id giảm dần
+               ->paginate(5);
+
         return view('admin.movie.list', ['movies' => $movies]);
     }
 

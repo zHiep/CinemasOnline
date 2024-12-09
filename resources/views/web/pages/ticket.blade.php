@@ -351,7 +351,7 @@
                     <div id="Payment" class="mt-5 collapse" data-bs-parent="#mainTicket">
                         <form id="paymentForm" action="/payment/create" method="post">
                             @csrf
-                            {{--<table class="table table-striped">
+                            <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <td>Tên</td>
@@ -369,7 +369,7 @@
                                 <span class="input-group-text">Sử dụng điểm</span>
                                 <input id="point" class="form-control" min="20000"  name="point" type="number" placeholder="0"
                                        aria-label="">
-                            </div>--}}
+                            </div>
                             <h4 class="mt-4">@lang('lang.discount')</h4>
                             <div class="bg-dark-subtle p-5">
                                 <div class="row row-cols-1">
@@ -798,11 +798,11 @@
                 }
             })
 
-            // $('#point').bind('keyup', (e) => {
-            //     $sum2 = $sum - $('#point').val()
-            //     $('#ticketSeat_totalPrice').text($sum2.toLocaleString('vi-VN'));
-            //     $('#amount').val($sum2);
-            // })
+            $('#point').bind('keyup', (e) => {
+                $sum2 = $sum - $('#point').val()
+                $('#ticketSeat_totalPrice').text($sum2.toLocaleString('vi-VN'));
+                $('#amount').val($sum2);
+            })
 
 
             $('#btn_apply_discount').click(function (){
