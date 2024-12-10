@@ -47,11 +47,12 @@ class MovieController extends Controller
         // Validate dữ liệu đầu vào
         $request->validate([
             'name' => 'required', // Tên phim là chuỗi và tối đa 255 ký tự
-            'showTime' => 'required|integer|min:1', 
+            'showTime' => 'required|integer|min:1',
             'releaseDate' => 'required|date|before_or_equal:endDate', // Ngày phát hành hợp lệ và trước hoặc bằng ngày kết thúc
             'endDate' => 'required|date|after_or_equal:releaseDate', // Ngày kết thúc hợp lệ và sau hoặc bằng ngày phát hành
             'national' => 'required|string', // Quốc gia là chuỗi, tối đa 100 ký tự
             'Image' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048', // Ảnh là file hợp lệ với kích thước tối đa 2MB
+            'trailer' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/'],
         ], [
             // Thông báo lỗi tùy chỉnh
             'name.required' => 'Vui lòng nhập tên phim.',
@@ -66,6 +67,8 @@ class MovieController extends Controller
             'Image.image' => 'Ảnh tải lên phải là file hình ảnh.',
             'Image.mimes' => 'Ảnh phải thuộc định dạng jpeg, jpg, png hoặc gif.',
             'Image.max' => 'Kích thước ảnh không được vượt quá 2MB.',
+            'trailer.required' => 'Vui lòng nhập liên kết trailer.',
+            'trailer.regex' => 'Trailer phải là một liên kết hợp lệ dẫn đến video.',
         ]);
         if ($request->hasFile('Image')) {
             $file = $request->file('Image');

@@ -408,14 +408,16 @@
 @section('scripts')
 <script>
     flatpickr($("#endDate"), {
-        dateFormat: "Y-m-d ",
-        "locale": "@lang('lang.language')",
-        allowInput: true // Cho phép nhập liệu và copy/dán
-    });
-    flatpickr($("#releaseDate"), {
-        dateFormat: "Y-m-d ",
+        dateFormat: "Y-m-d",
         "locale": "@lang('lang.language')",
         allowInput: true, // Cho phép nhập liệu và copy/dán
+        minDate: "today" // Ngày tối thiểu là ngày hiện tại
+    });
+    flatpickr($("#releaseDate"), {
+        dateFormat: "Y-m-d",
+        "locale": "@lang('lang.language')",
+        allowInput: true, // Cho phép nhập liệu và copy/dán
+        minDate: "today", // Ngày tối thiểu là ngày hiện tại
         onChange: function(selectedDates, dateStr, instance) {
             // Khi người dùng chọn ngày phát hành, cập nhật minDate cho endDate
             const endDatePicker = document.querySelector("#endDate")._flatpickr;
