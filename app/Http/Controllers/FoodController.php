@@ -67,7 +67,7 @@ class FoodController extends Controller
         $request->validate([
             'name' => 'required|string|max:255|regex:/^[\p{L}\p{N}\s]+$/u',
             'price' => 'required|numeric|min:0',
-            'Image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'Image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ], [
             'name.required' => 'Tên món ăn không được để trống.',
             'name.string' => 'Tên món ăn phải là chuỗi ký tự.',
@@ -76,7 +76,6 @@ class FoodController extends Controller
             'price.required' => 'Giá món ăn không được để trống.',
             'price.numeric' => 'Giá món ăn phải là số.',
             'price.min' => 'Giá món ăn phải lớn hơn hoặc bằng 0.',
-            'Image.required' => 'Vui lòng tải lên hình ảnh món ăn.',
             'Image.image' => 'Hình ảnh phải là một tệp hình ảnh.',
             'Image.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg.',
             'Image.max' => 'Hình ảnh không được vượt quá 2MB.',

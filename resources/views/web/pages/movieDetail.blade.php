@@ -4,6 +4,14 @@
         .hover_movie:hover {
             color: #f26b38 !important;
         }
+        .schedule-selected {
+            background-color: #000 !important;
+            /* Màu cam sáng */
+            color: white !important;
+            /* Chữ trắng */
+            border-color: #f26b38;
+            /* Đồng bộ màu viền */
+        }
     </style>
     <section class="container-lg">
         {{--  Breadcrumb  --}}
@@ -190,4 +198,19 @@
     </section>
 @endsection
 @section('js')
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const scheduleButtons = document.querySelectorAll('.btn-outline-dark');
+
+    scheduleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Loại bỏ class `schedule-selected` khỏi tất cả các nút
+            scheduleButtons.forEach(btn => btn.classList.remove('schedule-selected'));
+
+            // Thêm class `schedule-selected` cho nút hiện tại
+            this.classList.add('schedule-selected');
+        });
+    });
+});
+</script>
 @endsection

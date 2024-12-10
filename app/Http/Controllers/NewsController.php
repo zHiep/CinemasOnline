@@ -71,17 +71,11 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required|max:255',  // Tiêu đề là bắt buộc và tối đa 255 ký tự
             'contents' => 'required',       // Nội dung là bắt buộc
-            'Image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Kiểm tra ảnh hợp lệ, chỉ nhận các loại hình ảnh và dung lượng tối đa 2MB
         ], [
             'title.required' => 'Vui lòng nhập tiêu đề tin tức!',
             'title.max' => 'Tiêu đề tin tức không được vượt quá 255 ký tự!',
             
-            'contents.required' => 'Vui lòng nhập nội dung tin tức!',
-            
-            'Image.required' => 'Vui lòng nhập hình ảnh!',
-            'Image.image' => 'Tệp hình ảnh phải là một ảnh!',
-            'Image.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif, svg!',
-            'Image.max' => 'Dung lượng hình ảnh không được vượt quá 2MB!',
+            'contents.required' => 'Vui lòng nhập nội dung tin tức!'
         ]);
         $request['user_id'] = Auth::user()['id'];
         $request['content'] = $request->contents;

@@ -103,7 +103,6 @@ class SchedulesController extends Controller
             $schedule->save();
             unset($schedule);
         } else {
-
             $schedule = new Schedule([
                 'room_id' => $request->room,
                 'movie_id' => $request->movie,

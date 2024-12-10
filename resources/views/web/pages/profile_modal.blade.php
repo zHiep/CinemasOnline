@@ -63,9 +63,9 @@
                                  </tr>
                              </tbody>
                          </table>
-                         <a href="#refundTicket" data-toggle="tooltip"
+                         <!-- <a href="#refundTicket" data-toggle="tooltip"
                              data-bs-target="#refundTicket{!! $value['id'] !!}" data-bs-toggle="modal"
-                             class="text-uppercase text-center link link-dark text-decoration-none text-xl text-dark ">@lang('lang.refund_ticket')</a>
+                             class="text-uppercase text-center link link-dark text-decoration-none text-xl text-dark ">@lang('lang.refund_ticket')</a> -->
                      </div>
                  </div>
              </div>

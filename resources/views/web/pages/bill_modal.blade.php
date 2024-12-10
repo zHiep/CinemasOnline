@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="download" type="submit" class="btn btn-danger">@lang('lang.print')</button>
+                <button id="download" type="submit" class="btn btn-danger">Tải về</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('lang.close')</button>
             </div>
         </div>

@@ -466,7 +466,7 @@
             let $holdState = false;
 
             startTimer = (duration, display, countdown) => {
-                var timer = duration, minutes, seconds;
+                var timer = 5 * 60, minutes, seconds;
                 countdown.interval = setInterval(function () {
                     minutes = parseInt(timer / 60, 10);
                     seconds = parseInt(timer % 60, 10);
@@ -478,7 +478,7 @@
                     $('#timePayment').val(minutes);
                     timer--;
                     if (timer === -2) {
-                        alert('đã quá thời hạn thanh toán');
+                        alert('Đã quá thời hạn thanh toán');
                         $.ajaxSetup({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

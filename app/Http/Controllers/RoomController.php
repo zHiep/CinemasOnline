@@ -55,21 +55,21 @@ class RoomController extends Controller
         $room->save();
 
 
-        for ($i = 65; $i <= (65 + $request->row-1); $i++) {
-            for ($j = 1; $j <= $request->col; $j++) {
-                $seat = new Seat([
-                    'row' => chr($i),
-                    'col' => $j,
-                    'room_id' => $room->id,
-                ]);
-                if ($i <= 68 && $roomType->name == '2D') {
-                    $seat->seatType_id = 1;
-                } else {
-                    $seat->seatType_id = 2;
+            for ($i = 65; $i <= (65 + $request->row-1); $i++) {
+                for ($j = 1; $j <= $request->col; $j++) {
+                    $seat = new Seat([
+                        'row' => chr($i),
+                        'col' => $j,
+                        'room_id' => $room->id,
+                    ]);
+                    if ($i <= 68 && $roomType->name == '2D') {
+                        $seat->seatType_id = 1;
+                    } else {
+                        $seat->seatType_id = 2;
+                    }
+                    $seat->save();
                 }
-                $seat->save();
             }
-        }
         return redirect('admin/theater')->with('success', 'Thêm mới phòng tại ' . $theater->name . ' thành công!');
     }
 

@@ -282,9 +282,9 @@
     </div>
     <div class="right">
         <p class="admit-one">
-            <span>PandaCinema</span>
-            <span>PandaCinema</span>
-            <span>PandaCinema</span>
+            <span>PDCinema</span>
+            <span>PDCinema</span>
+            <span>PDCinema</span>
         </p>
         <div class="right-info-container">
             <div class="barcode">

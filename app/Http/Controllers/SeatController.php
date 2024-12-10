@@ -67,6 +67,7 @@ class SeatController extends Controller
         }
         return redirect('admin/seat/' . $request->room);
     }
+
     public function delete($id, Request $request){
         $seat = Seat::find($id);
         if ($seat) {
@@ -75,10 +76,12 @@ class SeatController extends Controller
         return redirect('admin/seat/' . $request->room)->with('success', 'Xóa thành công!');
 
     }
+
     public function on($id,$room_id){
         Seat::where('id', $id)->update(['status' => 0]);
         return redirect('admin/seat/'.$room_id);
     }
+    
     public function off($id,$room_id){
         Seat::where('id', $id)->update(['status' => 1]);
         return redirect('admin/seat/'.$room_id);

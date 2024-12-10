@@ -222,13 +222,13 @@ class StaffController extends Controller
                 $ticket->save();
 
                 if ($request->type == 'ticket') {
-                    return redirect('admin/buyTicket')->with('success', 'thanh toán thành công!');
+                    return redirect('admin/buyTicket')->with('success', 'Thanh toán thành công!');
                 } else {
-                    return redirect('admin/buyCombo')->with('success', 'thanh toán thành công!');
+                    return redirect('admin/buyCombo')->with('success', 'Thanh toán thành công!');
                 }
             default:
                 Ticket::where('code', $request->vnp_TxnRef)->delete();
-                return redirect('admin/buyTicket')->with('fail', 'thanh toán thất bại!');
+                return redirect('admin/buyTicket')->with('fail', 'Thanh toán thất bại!');
         }
     }
 
@@ -252,7 +252,7 @@ class StaffController extends Controller
     }
 
     public function handleScanTicket(Request $request) {
-        $message = 'vé hợp lệ';
+        $message = 'Vé hợp lệ';
         $check = true;
         $seatsList = '';
         $ticket = Ticket::where('code',  $request->code)->first();
@@ -268,13 +268,13 @@ class StaffController extends Controller
                         if ($ticket->status) {
                             $ticket->status = false;
                             $check = true;
-                            $message = 'vé hợp lệ';
+                            $message = 'Vé hợp lệ';
                         } else {
-                            $message = 'vé không hợp lệ';
+                            $message = 'Vé không hợp lệ';
                             $check = false;
                         }
                     } else {
-                        $message = 'suất chiếu đã kết thúc';
+                        $message = 'Suất chiếu đã kết thúc';
                         $check = false;
                         $ticket->status = false;
                     }
@@ -285,7 +285,7 @@ class StaffController extends Controller
                     $check = false;
                     $ticket->status = true;
             } else  {
-                $message = 'suất chiếu đã kết thúc';
+                $message = 'Suất chiếu đã kết thúc';
                 $check = false;
                 $ticket->status = false;
             }
@@ -296,7 +296,7 @@ class StaffController extends Controller
                 $seatsList .= $seats->row.$seats->col.',';
             }
         } else {
-            $message = 'không tìm thấy vé';
+            $message = 'Không tìm thấy vé';
             $check = false;
         }
 
@@ -375,11 +375,11 @@ class StaffController extends Controller
 
     public function handleScanCombo(Request $request) {
         $ticket = Ticket::where('code', $request->code)->first();
-        $message = 'vé hợp lệ';
+        $message = 'Vé hợp lệ';
         $check = true;
 
         if (!$ticket) {
-            $message = 'không tìm thấy vé';
+            $message = 'Không tìm thấy vé';
             $check = false;
         } else {
             if ($ticket->receivedCombo) {
