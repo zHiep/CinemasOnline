@@ -21,8 +21,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="movieName" class="form-control-label">@lang('lang.movie_name')</label>
-                                    <input class="form-control" name="name" id="movieName" type="text" value=""
-                                        placeholder="@lang('lang.movie_name')">
+                                    <input class="form-control" name="name" id="movieName" type="text"
+                                        placeholder="@lang('lang.movie_name')" required>
+                                    @if ($errors->has('name'))
+                                    <div class="text-danger">
+                                        {{ $errors->first('name') }}
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -382,8 +387,6 @@
                                     <input id="trailer" name="trailer" class="form-control" type="text" value=""
                                         placeholder="https://www.youtube.com/watch?v=">
                                 </div>
-
-
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">

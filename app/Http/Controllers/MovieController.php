@@ -46,7 +46,10 @@ class MovieController extends Controller
     {
         // Validate dữ liệu đầu vào
         $request->validate([
-            'name' => 'required', // Tên phim là chuỗi và tối đa 255 ký tự
+            'name' => 'required|max:255', // Không được để trống, giới hạn độ dài
+            'directors' => 'required|array|min:1', // Danh sách đạo diễn, yêu cầu ít nhất 1 giá trị
+            'casts' => 'required|array|min:1', // Danh sách diễn viên, yêu cầu ít nhất 1 giá trị
+            'movieGenres' => 'required|array|min:1', // Danh sách thể loại, yêu cầu ít nhất 1 giá trị
             'showTime' => 'required|integer|min:1',
             'releaseDate' => 'required|date|before_or_equal:endDate', // Ngày phát hành hợp lệ và trước hoặc bằng ngày kết thúc
             'endDate' => 'required|date|after_or_equal:releaseDate', // Ngày kết thúc hợp lệ và sau hoặc bằng ngày phát hành
@@ -55,7 +58,11 @@ class MovieController extends Controller
             'trailer' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/'],
         ], [
             // Thông báo lỗi tùy chỉnh
-            'name.required' => 'Vui lòng nhập tên phim.',
+            'name.required' => 'Tên phim không được để trống.', // Thông báo lỗi tùy chỉnh
+            'directors.required' => 'Tên đạo diễn không được để trống.',
+            'casts.required' => 'Tên diễn viên không được để trống.',
+            'movieGenres.required' => 'Tên thể loại không được để trống.',
+            'name.max' => 'Tên phim không được vượt quá 255 ký tự.', // Thông báo lỗi khi vượt quá ký tự cho phép
             'showTime.required' => 'Vui lòng nhập thời gian chiếu.',
             'showTime.integer' => 'Thời gian chiếu phải là một số nguyên.',
             'releaseDate.required' => 'Vui lòng nhập ngày phát hành.',
